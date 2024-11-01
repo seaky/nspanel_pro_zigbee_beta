@@ -10,14 +10,17 @@ if [ ! -d "$DIR" ]; then
 fi
 
 if [ ! -f "$DIR/firmware_version" ]; then
-    mv "$DIR" "${DIR}_original"
-    echo "Original version detected moved to ${DIR}_original"
+	if [ ! -d "${DIR}_original" ]; then
+		mv "$DIR" "${DIR}_original"
+		echo "Original version detected moved to ${DIR}_original"
+	else
+		echo "Original version already saved"
+	fi
 else 
-    rm "$DIR"
+    rm -f "$DIR/*"
 fi
 
-rm "$DIR/*"
-cp $1 "$DIR"
+cp -r "$1/." "$DIR"
 
 mount -o ro,remount /vendor
 
