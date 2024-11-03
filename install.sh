@@ -1,20 +1,10 @@
 #!/bin/sh
 
-function seal_back_vendor () {
-	echo "/vendor seal back"
-	mount -o ro,remount /vendor
-}
-
-
-echo "/vendor seal open"
-mount -o rw,remount /vendor
-
 DIR=$2
 echo "Firmware location is $DIR"
 
 if [ ! -d "$DIR" ]; then
     echo "$DIR directory not found"
-	seal_back_vendor
     exit 1
 fi
 
@@ -24,7 +14,6 @@ if [ ! -f "$DIR/firmware_version" ]; then
 		echo "Backup completed in the ${DIR}_original directory"
 	else
 		echo "Upps... firmware_version is missing but the backup already exists in the ${DIR}_original directory"
-		seal_back_vendor
 		exit 1
 	fi
 else 
@@ -36,6 +25,4 @@ echo "Copy $1 to $DIR"
 cp -r "$1/." "$DIR"
 
 chmod -R 755 "$DIR"
-
-seal_back_vendor
 
