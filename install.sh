@@ -34,5 +34,8 @@ fi
 echo "Copy $1 to $DIR"
 cp -r "$1/." "$DIR"
 
+chmod 755 "$DIR"
+chmod 755 "$DIR/*"
+
 seal_back_vendor
 
