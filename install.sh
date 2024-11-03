@@ -1,26 +1,38 @@
 #!/bin/sh
 
+function seal_back_vendor () {
+	echo "/vendor seal back"
+	mount -o ro,remount /vendor
+}
+
+
+echo "/vendor seal open"
 mount -o rw,remount /vendor
 
 DIR=/vendor/bin/siliconlabs_host_test
 
 if [ ! -d "$DIR" ]; then
     echo "$DIR directory not found"
+	seal_back_vendor
     exit 1
 fi
 
 if [ ! -f "$DIR/firmware_version" ]; then
 	if [ ! -d "${DIR}_original" ]; then
 		mv "$DIR" "${DIR}_original"
-		echo "Original version detected moved to ${DIR}_original"
+		echo "Backup completed in the ${DIR}_original directory"
 	else
-		echo "Original version already saved"
+		echo "Upps... firmware_version is missing but the backup already exists in the ${DIR}_original directory"
+		seal_back_vendor
+		exit 1
 	fi
 else 
+	echo "Purge $DIR"
     rm -f "$DIR/*"
 fi
 
+echo "Copy $1 to $DIR"
 cp -r "$1/." "$DIR"
 
-mount -o ro,remount /vendor
+seal_back_vendor
 
