@@ -9,7 +9,8 @@ function seal_back_vendor () {
 echo "/vendor seal open"
 mount -o rw,remount /vendor
 
-DIR=/vendor/bin/siliconlabs_host_test
+DIR=$2
+echo "Firmware location is $DIR"
 
 if [ ! -d "$DIR" ]; then
     echo "$DIR directory not found"
@@ -34,8 +35,7 @@ fi
 echo "Copy $1 to $DIR"
 cp -r "$1/." "$DIR"
 
-chmod 755 "$DIR"
-chmod 755 "$DIR/*"
+chmod -R 755 "$DIR"
 
 seal_back_vendor
 
