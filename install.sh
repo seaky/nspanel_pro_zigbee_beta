@@ -25,4 +25,5 @@ echo "Copy $1 to $DIR"
 cp -r "$1/." "$DIR"
 
 chmod -R 755 "$DIR"
+chown -R root:shell "$DIR"
 
