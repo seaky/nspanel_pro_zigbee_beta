@@ -4,23 +4,23 @@ on:
     tags:
       - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
-name: Create Release
+name: Draft a release
 
 jobs:
-  build:
+  make_release:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Set Firmware Version in File
+    - name: Create artifact
       run: |
         pwd
         TAG_NAME="${GITHUB_REF##*/}"
         sed -i "s/\\\$TAG:/$TAG_NAME:/" firmware_version
         cat firmware_version
         ARTIFACT_NAME="nspanel_pro_zigbee_${TAG_NAME}.zip"
-        zip -r $ARTIFACT_NAME .
+        zip -r $ARTIFACT_NAME . -x ".git/*" ".github/*"
         echo "GITHUB_ARTIFACT_NAME=$ARTIFACT_NAME" >> $GITHUB_ENV
     - name: Create Release
       uses: ncipollo/release-action@v1.14.0
