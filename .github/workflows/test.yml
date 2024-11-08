@@ -19,7 +19,7 @@ jobs:
         TAG_NAME="${GITHUB_REF##*/}"
         sed -i "s/\\\$TAG:/$TAG_NAME:/" firmware_version
         cat firmware_version
-        zip -r fw.zip .
+        zip -r nspanel_pro_zigbee_${TAG_NAME}.zip .
     - name: Create Release
       uses: ncipollo/release-action@v1.14.0
       with:
