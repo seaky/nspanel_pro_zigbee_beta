@@ -19,9 +19,11 @@ jobs:
         TAG_NAME="${GITHUB_REF##*/}"
         sed -i "s/\\\$TAG:/$TAG_NAME:/" firmware_version
         cat firmware_version
+        zip -r fw.zip .
     - name: Create Release
       uses: ncipollo/release-action@v1.14.0
       with:
+        artifacts: "fw.zip"
         allowUpdates: true
         draft: true
         makeLatest: true
