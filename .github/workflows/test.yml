@@ -7,15 +7,15 @@ on:
 name: Create Release
 
 jobs:
-  update_version_and_release:
+  build:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-
     - name: Set Firmware Version in File
       run: |
+        pwd
         TAG_NAME="${GITHUB_REF##*/}"
         sed -i "s/\\\$TAG:/$TAG_NAME:/" firmware_version
         cat firmware_version
@@ -23,7 +23,7 @@ jobs:
       uses: ncipollo/release-action@v1.14.0
       with:
         allowUpdates: true
-        draft: false
+        draft: true
         makeLatest: true
         name: ${{ github.ref_name }}
         body: ${{ github.ref_name }}
