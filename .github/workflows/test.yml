@@ -18,12 +18,12 @@ jobs:
       run: |
         TAG_NAME="${GITHUB_REF##*/}"
         sed -i "s/\\\$TAG:/$TAG_NAME:/" firmware_version
-    - name: Create GitHub Release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create Release
+      uses: ncipollo/release-action@v1.14.0
       with:
-        tag_name: ${{ github.ref_name }}
-        release_name: ${{ github.ref_name }}
-        draft: true
-        prerelease: false
+        allowUpdates: true
+        draft: false
+        makeLatest: true
+        name: ${{ github.ref_name }}
+        body: ${{ github.ref_name }}
+        token: ${{ github.token }}
