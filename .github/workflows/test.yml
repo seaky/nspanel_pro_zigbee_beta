@@ -18,6 +18,7 @@ jobs:
       run: |
         TAG_NAME="${GITHUB_REF##*/}"
         sed -i "s/\\\$TAG:/$TAG_NAME:/" firmware_version
+        cat firmware_version
     - name: Create Release
       uses: ncipollo/release-action@v1.14.0
       with:
