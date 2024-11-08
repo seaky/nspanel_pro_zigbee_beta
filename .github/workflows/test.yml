@@ -19,11 +19,13 @@ jobs:
         TAG_NAME="${GITHUB_REF##*/}"
         sed -i "s/\\\$TAG:/$TAG_NAME:/" firmware_version
         cat firmware_version
-        zip -r nspanel_pro_zigbee_${TAG_NAME}.zip .
+        ARTIFACT_NAME="nspanel_pro_zigbee_${TAG_NAME}.zip"
+        zip -r $ARTIFACT_NAME .
+        echo "GITHUB_ARTIFACT_NAME=$ARTIFACT_NAME" >> $GITHUB_ENV
     - name: Create Release
       uses: ncipollo/release-action@v1.14.0
       with:
-        artifacts: "fw.zip"
+        artifacts: ${{ env.GITHUB_ARTIFACT_NAME }}
         allowUpdates: true
         draft: true
         makeLatest: true
