@@ -11,7 +11,7 @@ function start_zgateway() {
 }
 
 
-DIR=$2
+DIR=$1
 echo "ZGateway location is $DIR"
 
 if [ ! -d "$DIR" ]; then
