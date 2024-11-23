@@ -2,13 +2,13 @@
 
 
 function stop_zgateway() {
-	pkill -9 -f "sh /vendor/bin/siliconlabs_host/guard_process.sh"
+    pkill -9 -f "sh /vendor/bin/siliconlabs_host/guard_process.sh"
     killall zgateway
     killall mosquitto
 }
 
 function start_zgateway() {
-	sh /vendor/bin/siliconlabs_host/guard_process.sh &
+	sh /vendor/bin/siliconlabs_host/run.sh &
 }
 
 
