@@ -25,7 +25,7 @@ if [ ! -f "$DIR/zgateway_version" ]; then
 else
     stop_zgateway
 	echo "Remove $DIR"
-    rm -f "$DIR"
+    rm -rf "$DIR"
 
 fi
 
