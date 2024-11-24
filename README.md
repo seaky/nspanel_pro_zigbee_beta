@@ -1,4 +1,4 @@
-### Branch-dev
+### Branch-dev2
 ### Zigbee Gateway package for NSPanel Pro device
 NSPanel Pro ZGateway's latest binary. 
 
