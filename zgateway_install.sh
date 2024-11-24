@@ -13,7 +13,7 @@ function stop_zgateway() {
 }
 
 function start_zgateway() {
-    sh /vendor/bin/siliconlabs_host/run.sh &
+    sh /vendor/bin/siliconlabs_host/run.sh > /dev/null & 
 }
 
 DIR=$2
