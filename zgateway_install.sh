@@ -38,7 +38,7 @@ if [ ! -f "$DIR/zgateway_version" ]; then
 else 
     stop_zgateway
     echo "Purge $DIR"
-    rm -f "$DIR/*"
+    rm -rf "$DIR/*"
 fi
 
 # install new package
