@@ -75,7 +75,10 @@ function install() {
         fi
     fi
     #cp -r "$source_dir"/* "$target_dir/"
-    scopy $source_dir $target_dir
+    scopy $source_dir $target_dir z2m nodejs
+    mkdir -p /oem/nspanel_tools_pkg
+    scopy $source_dir/z2m /oem/nspanel_tools_pkg
+    scopy $source_dir/nodejs /oem/nspanel_tools_pkg
     start_zgateway
 }
 
@@ -87,6 +90,7 @@ function restore() {
             echo "Restore backup to $target_dir"
             rm -rf $target_dir
             mv $backup_dir $target_dir
+            rm -rf /oem/nspanel_tools_pkg
             start_zgateway
         else
             echo "Backup dir does not exist: $backup_dir"
