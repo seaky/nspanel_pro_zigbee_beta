@@ -76,9 +76,14 @@ function install() {
     fi
     #cp -r "$source_dir"/* "$target_dir/"
     scopy $source_dir $target_dir z2m nodejs
-    mkdir -p /oem/nspanel_tools_pkg
-    scopy $source_dir/z2m /oem/nspanel_tools_pkg
-    scopy $source_dir/nodejs /oem/nspanel_tools_pkg
+
+    chmod -R 755 "$target_dir"
+    chown -R root:shell "$target_dir"
+
+    mkdir -p /oem/nspanel_tools_pkg/z2m
+    mkdir -p /oem/nspanel_tools_pkg/nodejs
+    scopy $source_dir/z2m /oem/nspanel_tools_pkg/z2m
+    scopy $source_dir/nodejs /oem/nspanel_tools_pkg/nodejs
     start_zgateway
 }
 
