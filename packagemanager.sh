@@ -76,6 +76,10 @@ function install() {
     fi
     #cp -r "$source_dir"/* "$target_dir/"
     scopy $source_dir $target_dir
+
+    chmod -R 755 "$target_dir"
+    chown -R root:shell "$target_dir"
+    
     start_zgateway
 }
 
