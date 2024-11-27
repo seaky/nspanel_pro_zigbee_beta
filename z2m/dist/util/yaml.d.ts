@@ -1,10 +1,5 @@
-import { YAMLException } from 'js-yaml';
-export declare class YAMLFileException extends YAMLException {
-    file: string;
-    constructor(error: YAMLException, file: string);
-}
 declare function read(file: string): KeyValue;
-declare function readIfExists(file: string, fallback?: KeyValue): KeyValue;
+declare function readIfExists(file: string, default_?: KeyValue): KeyValue;
 declare function writeIfChanged(file: string, content: KeyValue): void;
 declare function updateIfChanged(file: string, key: string, value: KeyValue): void;
 declare const _default: {

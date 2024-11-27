@@ -3,7 +3,7 @@ declare class State {
     private readonly zigbee;
     private state;
     private file;
-    private timer?;
+    private timer;
     constructor(eventBus: EventBus, zigbee: Zigbee);
     start(): void;
     stop(): void;

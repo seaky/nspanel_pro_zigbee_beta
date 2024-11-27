@@ -5,14 +5,14 @@ import Extension from './extension';
 export declare const loadTopicGetSetRegex: () => void;
 interface ParsedTopic {
     ID: string;
-    endpoint: string | undefined;
+    endpoint: string;
     attribute: string;
     type: 'get' | 'set';
 }
 export default class Publish extends Extension {
     start(): Promise<void>;
-    parseTopic(topic: string): ParsedTopic | undefined;
-    parseMessage(parsedTopic: ParsedTopic, data: eventdata.MQTTMessage): KeyValue | undefined;
+    parseTopic(topic: string): ParsedTopic | null;
+    parseMessage(parsedTopic: ParsedTopic, data: eventdata.MQTTMessage): KeyValue | null;
     legacyLog(payload: KeyValue): Promise<void>;
     legacyRetrieveState(re: Device | Group, converter: zhc.Tz.Converter, result: zhc.Tz.ConvertSetResult, target: zh.Endpoint | zh.Group, key: string, meta: zhc.Tz.Meta): void;
     updateMessageHomeAssistant(message: KeyValue, entityState: KeyValue): void;

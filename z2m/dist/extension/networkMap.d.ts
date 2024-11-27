@@ -23,11 +23,11 @@ interface Topology {
         friendlyName: string;
         type: string;
         networkAddress: number;
-        manufacturerName: string | undefined;
-        modelID: string | undefined;
+        manufacturerName: string;
+        modelID: string;
         failed: string[];
-        lastSeen: number | undefined;
-        definition?: {
+        lastSeen: number;
+        definition: {
             model: string;
             vendor: string;
             supports: string;

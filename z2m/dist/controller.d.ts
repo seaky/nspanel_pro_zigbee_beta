@@ -7,7 +7,6 @@ export declare class Controller {
     private exitCallback;
     private extensions;
     private extensionArgs;
-    private sdNotify;
     constructor(restartCallback: () => Promise<void>, exitCallback: (code: number, restart: boolean) => Promise<void>);
     start(): Promise<void>;
     enableDisableExtension(enable: boolean, name: string): Promise<void>;

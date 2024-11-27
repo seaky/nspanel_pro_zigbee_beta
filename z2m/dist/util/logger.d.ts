@@ -22,10 +22,10 @@ declare class Logger {
     private resetCachedNamespacedLevels;
     private cacheNamespacedLevel;
     private log;
-    error(messageOrLambda: string | (() => string), namespace?: string): void;
-    warning(messageOrLambda: string | (() => string), namespace?: string): void;
-    info(messageOrLambda: string | (() => string), namespace?: string): void;
-    debug(messageOrLambda: string | (() => string), namespace?: string): void;
+    error(message: string, namespace?: string): void;
+    warning(message: string, namespace?: string): void;
+    info(message: string, namespace?: string): void;
+    debug(message: string, namespace?: string): void;
     cleanup(): void;
     end(): Promise<void>;
 }

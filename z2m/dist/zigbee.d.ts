@@ -21,21 +21,20 @@ export default class Zigbee {
     reset(type: 'soft' | 'hard'): Promise<void>;
     stop(): Promise<void>;
     getPermitJoin(): boolean;
-    getPermitJoinTimeout(): number | undefined;
+    getPermitJoinTimeout(): number;
     permitJoin(permit: boolean, device?: Device, time?: number): Promise<void>;
     private resolveDevice;
     private resolveGroup;
-    resolveEntity(key: string | number | zh.Device): Device | Group | undefined;
+    resolveEntity(key: string | number | zh.Device): Device | Group;
     resolveEntityAndEndpoint(ID: string): {
         ID: string;
-        entity: Device | Group | undefined;
-        endpointID?: string;
-        endpoint?: zh.Endpoint;
+        entity: Device | Group;
+        endpointID: string;
+        endpoint: zh.Endpoint;
     };
     firstCoordinatorEndpoint(): zh.Endpoint;
-    devicesAndGroupsIterator(devicePredicate?: (value: zh.Device) => boolean, groupPredicate?: (value: zh.Group) => boolean): Generator<Device | Group>;
-    groupsIterator(predicate?: (value: zh.Group) => boolean): Generator<Group>;
-    devicesIterator(predicate?: (value: zh.Device) => boolean): Generator<Device>;
+    groups(): Group[];
+    devices(includeCoordinator?: boolean): Device[];
     private acceptJoiningDeviceHandler;
     touchlinkFactoryResetFirst(): Promise<boolean>;
     touchlinkFactoryReset(ieeeAddr: string, channel: number): Promise<boolean>;
@@ -46,7 +45,7 @@ export default class Zigbee {
         channel: number;
     }[]>;
     createGroup(ID: number): Group;
-    deviceByNetworkAddress(networkAddress: number): Device | undefined;
+    deviceByNetworkAddress(networkAddress: number): Device;
     groupByID(ID: number): Group;
 }
 //# sourceMappingURL=zigbee.d.ts.map

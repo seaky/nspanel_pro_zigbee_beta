@@ -9,7 +9,7 @@ type DefinitionPayload = {
     exposes: zhc.Expose[];
     supports_ota: boolean;
     icon: string;
-    options: zhc.Option[];
+    options: zhc.Expose[];
 };
 export default class Bridge extends Extension {
     private zigbee2mqttVersion;
@@ -17,8 +17,8 @@ export default class Bridge extends Extension {
     private zigbeeHerdsmanConvertersVersion;
     private coordinatorVersion;
     private restartRequired;
-    private lastJoinedDeviceIeeeAddr?;
-    private lastBridgeLoggingPayload?;
+    private lastJoinedDeviceIeeeAddr;
+    private lastBridgeLoggingPayload;
     private logTransport;
     private requestLookup;
     start(): Promise<void>;
@@ -63,7 +63,7 @@ export default class Bridge extends Extension {
     publishDevices(): Promise<void>;
     publishGroups(): Promise<void>;
     publishDefinitions(): Promise<void>;
-    getDefinitionPayload(device: Device): DefinitionPayload | undefined;
+    getDefinitionPayload(device: Device): DefinitionPayload;
 }
 export {};
 //# sourceMappingURL=bridge.d.ts.map

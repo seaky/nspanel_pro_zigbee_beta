@@ -5,7 +5,7 @@ export default class Group {
     get ID(): number;
     get options(): GroupOptions;
     get name(): string;
-    constructor(group: zh.Group, resolveDevice: (ieeeAddr: string) => Device | undefined);
+    constructor(group: zh.Group, resolveDevice: (ieeeAddr: string) => Device);
     hasMember(device: Device): boolean;
     membersDevices(): Device[];
     membersDefinitions(): zhc.Definition[];

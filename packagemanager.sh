@@ -80,10 +80,10 @@ function install() {
     chmod -R 755 "$target_dir"
     chown -R root:shell "$target_dir"
 
-    mkdir -p /oem/nspanel_tools_pkg/z2m
-    mkdir -p /oem/nspanel_tools_pkg/nodejs
-    scopy $source_dir/z2m /oem/nspanel_tools_pkg/z2m
-    scopy $source_dir/nodejs /oem/nspanel_tools_pkg/nodejs
+    mkdir -p /data/local/tmp/nspanel_tools_pkg/z2m
+    mkdir -p /data/local/tmp/nspanel_tools_pkg/nodejs
+    scopy $source_dir/z2m //data/local/tmp/nspanel_tools_pkg/z2m
+    scopy $source_dir/nodejs /data/local/tmp/nspanel_tools_pkg/nodejs
     start_zgateway
 }
 
@@ -95,7 +95,7 @@ function restore() {
             echo "Restore backup to $target_dir"
             rm -rf $target_dir
             mv $backup_dir $target_dir
-            rm -rf /oem/nspanel_tools_pkg
+            rm -rf /data/local/tmp/nspanel_tools_pkg
             start_zgateway
         else
             echo "Backup dir does not exist: $backup_dir"

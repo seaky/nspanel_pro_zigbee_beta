@@ -11,8 +11,8 @@ export default class EventBus {
     onPublishAvailability(key: ListenerKey, callback: () => void): void;
     emitEntityRenamed(data: eventdata.EntityRenamed): void;
     onEntityRenamed(key: ListenerKey, callback: (data: eventdata.EntityRenamed) => void): void;
-    emitEntityRemoved(data: eventdata.EntityRemoved): void;
-    onEntityRemoved(key: ListenerKey, callback: (data: eventdata.EntityRemoved) => void): void;
+    emitDeviceRemoved(data: eventdata.DeviceRemoved): void;
+    onDeviceRemoved(key: ListenerKey, callback: (data: eventdata.DeviceRemoved) => void): void;
     emitLastSeenChanged(data: eventdata.LastSeenChanged): void;
     onLastSeenChanged(key: ListenerKey, callback: (data: eventdata.LastSeenChanged) => void): void;
     emitDeviceNetworkAddressChanged(data: eventdata.DeviceNetworkAddressChanged): void;

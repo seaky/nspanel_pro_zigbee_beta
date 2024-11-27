@@ -4,15 +4,14 @@ mqtt:
   base_topic: zigbee2mqtt
   server: mqtt://localhost
 serial:
-  # Location of CC2531 USB sniffer
   port: /dev/ttyS5
   baudrate: 115200
   rtscts: true
-frontend: true
+  adapter: ezsp
 advanced:
+  log_level: info
   homeassistant_legacy_entity_attributes: false
   legacy_api: false
   legacy_availability_payload: false
-  log_level: info
 device_options:
   legacy: false

@@ -1,7 +1,7 @@
 import Extension from './extension';
 interface MockProperty {
     property: string;
-    value: KeyValue | string | null;
+    value: KeyValue | string;
 }
 interface DiscoveryEntry {
     mockProperties: MockProperty[];
@@ -40,7 +40,6 @@ export default class HomeAssistant extends Extension {
     private discoveryRegexWoTopic;
     private statusTopic;
     private entityAttributes;
-    private legacyTrigger;
     private zigbee2MQTTVersion;
     private discoveryOrigin;
     private bridge;
@@ -49,7 +48,7 @@ export default class HomeAssistant extends Extension {
     start(): Promise<void>;
     private getDiscovered;
     private exposeToConfig;
-    onEntityRemoved(data: eventdata.EntityRemoved): Promise<void>;
+    onDeviceRemoved(data: eventdata.DeviceRemoved): Promise<void>;
     onGroupMembersChanged(data: eventdata.GroupMembersChanged): Promise<void>;
     onPublishEntityState(data: eventdata.PublishEntityState): Promise<void>;
     onEntityRenamed(data: eventdata.EntityRenamed): Promise<void>;

@@ -1,10 +1,10 @@
 export default class MQTT {
     private publishedTopics;
-    private connectionTimer?;
+    private connectionTimer;
     private client;
     private eventBus;
     private initialConnect;
-    private republishRetainedTimer?;
+    private republishRetainedTimer;
     retainedMessages: {
         [s: string]: {
             payload: string;

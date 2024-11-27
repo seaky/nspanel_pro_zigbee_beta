@@ -6,7 +6,7 @@ export default class Groups extends Extension {
     private syncGroupsWithSettings;
     onStateChange(data: eventdata.StateChange): Promise<void>;
     private shouldPublishPayloadForGroup;
-    private areAllMembersOffOrClosed;
+    private areAllMembersOff;
     private parseMQTTMessage;
     private onMQTTMessage;
 }

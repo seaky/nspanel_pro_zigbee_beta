@@ -1,6 +1,6 @@
 import Extension from '../extension';
 export default class BridgeLegacy extends Extension {
-    private lastJoinedDeviceName?;
+    private lastJoinedDeviceName;
     private supportedOptions;
     start(): Promise<void>;
     whitelist(topic: string, message: string): Promise<void>;
@@ -23,7 +23,7 @@ export default class BridgeLegacy extends Extension {
     removeForceRemoveOrBan(action: string, message: string): Promise<void>;
     onMQTTMessage(data: eventdata.MQTTMessage): Promise<void>;
     publish(): Promise<void>;
-    onZigbeeEvent_(type: string, data: KeyValue, resolvedEntity: Device | undefined): Promise<void>;
+    onZigbeeEvent_(type: string, data: KeyValue, resolvedEntity: Device): Promise<void>;
     touchlinkFactoryReset(): Promise<void>;
 }
 //# sourceMappingURL=bridgeLegacy.d.ts.map

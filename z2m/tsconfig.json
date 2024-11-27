@@ -5,7 +5,6 @@
         "esModuleInterop": true,
         "target": "ES2022",
         "lib": ["ES2022"],
-        "strict": true,
         "noImplicitAny": true,
         "noImplicitThis": true,
         "moduleResolution": "node",
