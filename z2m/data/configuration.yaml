@@ -6,7 +6,7 @@ mqtt:
 serial:
   port: /dev/ttyS5
   baudrate: 115200
-  rtscts: true
+  rtscts: false
   adapter: ezsp
 advanced:
   log_level: info
